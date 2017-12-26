@@ -20,10 +20,10 @@ In my experience, what often matters the most when you are picking your tech sta
 
 Here is the stack that I am currently very familiar with, that scales well.
 
-- Node
-- Express
-- Postgres
-- Sequelize
+- [Node](https://nodejs.org/)
+- [Express](http://expressjs.com/)
+- [Postgres](https://www.postgresql.org/)
+- [Sequelize](sequelize.readthedocs.org)
 
 Of course, many more libraries/tools are added to this stack, but these are the core components that the majority of your code is going to deal with.
 
@@ -35,13 +35,13 @@ Depending on the nature of your application, you may need to a database for cach
 
 Funny enough, the frontend is in many ways a more complex beast than the backend. Here is the stack that I am currently very familiar with, that scale well.
 
-- React, set up with...
-- create-react-app
-- Redux
-- redux-actions
-- redux-thunk
-- React Router
-- Sass (if necessary)
+- [React](https://reactjs.org/), set up with...
+- [create-react-app](https://github.com/facebookincubator/create-react-app)
+- [Redux](https://redux.js.org/)
+- [redux-actions](https://github.com/reduxactions/redux-actions)
+- [redux-thunk](https://github.com/gaearon/redux-thunk)
+- [React Router](https://github.com/ReactTraining/react-router)
+- [Sass](http://sass-lang.com/) (if necessary)
 
 create-react-app is arguably the most important piece of this stack. While it *does* limit what you can do with your build process, I've found that setting up and maintaining a proper Webpack (or Grunt, or Gulp, or Broccoli, or...) configuration is often an infuriating experience. Even when you have everything working, you'll often find that over time your custom setup become untolerably SLOW. My recommendation: save yourself the pain! On top of that, the docs of create-react-app offer a ton of great tips for things you might want to add to your stack.
 
@@ -55,5 +55,15 @@ The one glaring weakness in this stack is the creation of forms. The React world
 ### Activity/Event Tracking
 
 One lesson I've recently learned is how crucial it is to track events happening in your application, along with a good amount of metadata to go with that event.
+
+The main reason to have some event tracking in your application is to evaluate the user experience (UX) of your application. The more time you spend working on your application, the harder it is to look at it from the point of view of a new or casual user. Therefore, a user flow that you find intuitive could be a big source of frustration for the majority of your users. Without any type of tracking, it's much more difficult to find these weak spots of the UX. Yes, you could conduct a series of user tests to discover some of these weak spots, but nothing validates the need for action more than data gathered from real-world usage.
+
+Therefore, whenever you develop a significant new user-facing feature, think early on about how you're going to track the success or failure of this feature. Often, the criteria for success will be something along the lines of "the vast majority of people who click on button A will afterwards fill out and submit the form on page B" or "most users who open this page will click at least one of these button". Both these examples can be expressed as a percentage (e.g. *# of page B form submitted* / *# of button A clicks*), which represents a **success rate**.
+
+The other big reason to track events is simply to have a lot of data to dig into afterwards, to get insights into your users' preferences and use those insights to help guide your future features and priorities.
+
+[Google Analytics](https://www.google.com/analytics/#?modal_active=none) is the 3rd-party tool that most projects begin with, if only because the free tier provides good enough features for a while. I've recently had success with [Mixpanel](https://mixpanel.com/), although it gets expensive quickly once your want to upgrade from the free tier plan.
+
+Unfortunately, I haven't found an open-source solution yet that provides everything you'll need: front-end page and event tracking, storage of tracking data and visual analytics of this data, with some complex filtering options. However, of these 3 requirements, the first 2 (front-end tracking, data storage) are relatively easy to implement on your own, and it's really the 3rd requirement (data dashboard) that would take a long time to build.  To fulfill that 3rd requirement, a lot of teams make use of [Tableau](https://www.tableau.com/), although there are now interesting open-source alternatives like [Apache Superset](https://github.com/apache/incubator-superset), [Redash](https://github.com/getredash/redash) and [Metabase](https://github.com/metabase/metabase).
 
 
