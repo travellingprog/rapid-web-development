@@ -67,3 +67,16 @@ The other big reason to track events is simply to have a lot of data to dig into
 Unfortunately, I haven't found an open-source solution yet that provides everything you'll need: front-end page and event tracking, storage of tracking data and visual analytics of this data, with some complex filtering options. However, of these 3 requirements, the first 2 (front-end tracking, data storage) are relatively easy to implement on your own, and it's really the 3rd requirement (data dashboard) that would take a long time to build.  To fulfill that 3rd requirement, a lot of teams make use of [Tableau](https://www.tableau.com/), although there are now interesting open-source alternatives like [Apache Superset](https://github.com/apache/incubator-superset), [Redash](https://github.com/getredash/redash) and [Metabase](https://github.com/metabase/metabase).
 
 
+### Testing
+
+Having good code coverage with automated tests is something that most developers aspire to, but, in my experience, high code coverage does not make for *rapid* development. It's certainly a fact that in a well-tested codebase, your test code can often grow to be bigger than your application code. On top of that, your most important code is usually interacting with APIs and services (such as the database) that are difficult to mock. Figuring out *how* to test your code can often take longer than writing the code itself.
+
+All that being said, as your application grows bigger and more complex, the absence of automated tests will make you more nervous. As you introduce more and more new features, it becomes more likely that you'll overlook an uncommon scenario in one of your older features. Manual testing certainly has its limits.
+
+Therefore, I believe that it's understandable if, as a balance between speed and reliability, you only write tests for the *most critical* parts of your application.
+
+With the frontend and backend tools I've recommended above, the most appropriate testing framework is [Jest](https://facebook.github.io/jest/). It's unrivaled when it comes to testing React code, and it's quite capable of running tests for backend JS code as well.
+
+If Jest isn't for you, then I believe that both [Mocha](https://mochajs.org/) and [Jasmine](https://jasmine.github.io/) are very good libraries as well. Jasmine is incredibly easy and quick to set up, but Mocha has more flexibility, more power, and a larger ecosystem.
+
+
